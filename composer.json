@@ -1,0 +1,15 @@
+{
+    "name": "donwilson/youtube-trending-data-analyzer",
+    "description": "Analytic tools for YouTube Trending data",
+    "type": "project",
+    "require": {
+        "pda/pheanstalk": "^3.1"
+    },
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Don Wilson",
+            "email": "donwilson@gmail.com"
+        }
+    ]
+}
