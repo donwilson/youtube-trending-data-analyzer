@@ -1,4 +1,6 @@
 <?php
+	require_once(__DIR__ ."/vendor/autoload.php");
+	
 	$available_folders = [];
 	
 	$raw_folders = glob("data/*");

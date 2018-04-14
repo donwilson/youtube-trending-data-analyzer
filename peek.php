@@ -1,4 +1,6 @@
 <?php
+	require_once(__DIR__ ."/config.php");
+	
 	// internal lib
 	require_once(__DIR__ ."/lib/process.php");
 	
@@ -22,8 +24,6 @@
 	
 	// extract
 	$extracted_data = extract_youtube_trending_data($raw_html, $timestamp);
-	
-	
 	
 	// show
 ?><!DOCTYPE html>
@@ -88,6 +88,8 @@
 							</td>
 							<td><a href="https://anon.to/?https://www.youtube.com/watch?v=<?=htmlentities($video['id']);?>" target="_blank"><img src="<?=htmlentities("https://img.youtube.com/vi/". $video['id'] ."/default.jpg");?>" /></a></td>
 							<td>
+								<h2><?=htmlentities($video['title']);?></h2>
+								
 								<h5>Parsed Data</h5>
 								<p><button class="btn btn-primary" type="button" data-toggle="collapse" data-target="<?=htmlentities("#debug__". $video['id']);?>" aria-expanded="false" aria-controls="collapseExample">Toggle Debug</button></p>
 								

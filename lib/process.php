@@ -230,11 +230,15 @@
 					
 					if(preg_match("#^([0-9,]+)\s*views?#si", $meta_text, $match)) {
 						$video_data['views'] = preg_replace("#[^0-9]+#si", "", $match[1]);
-					} elseif(preg_match("#^([0-9]+)\s*(minute?|hour|day|week|month)s?\s*ago?#si", $meta_text, $match)) {
-						$age_num = (int)$match[1];
+					} elseif(preg_match("#^(Streamed\s*)?([0-9]+)\s*(minute?|hour|day|week|month)s?\s*ago?#si", $meta_text, $match)) {
+						if("streamed" == strtolower(trim($match[1]))) {
+							$video_data['stream'] = true;
+						}
+						
+						$age_num = (int)$match[2];
 						$minutes_ago = 0;
 						
-						switch(strtolower(trim($match[2]))) {
+						switch(strtolower(trim($match[3]))) {
 							case 'minute':
 								$minutes_ago = $age_num;
 							break;
@@ -249,6 +253,9 @@
 							break;
 							case 'month':
 								$minutes_ago = ($age_num * 60 * 24 * 30);
+							break;
+							case 'year':
+								$minutes_ago = ($age_num * 60 * 24 * 365);
 							break;
 						}
 						

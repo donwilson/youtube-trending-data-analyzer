@@ -1,4 +1,5 @@
 vendor/
 data/
 config.php
-
+composer.lock
+raw_data/
